@@ -1,0 +1,1 @@
+This is an annotation wich links to a seperate text. This text is in an extra text node in the graphDB.
