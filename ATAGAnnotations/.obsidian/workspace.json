@@ -157,21 +157,23 @@
   },
   "active": "80bc9236565981b4",
   "lastOpenFiles": [
+    "line.md",
     "Annotationslegende.md",
+    "paragraph.md",
+    "addition.md",
+    "head.md",
     "comment.md",
-    "inLineAnnotation.md",
-    "linkToTextAnnotation.md",
-    "repeated.md",
+    "commentInternal.md",
     "nonLinear.md",
+    "repeated.md",
     "intervention.md",
     "inLineAnnotationWithAlternativeText.md",
-    "commentaryInternal.md",
-    "head.md",
-    "unclear.md",
-    "line.md",
+    "inLineAnnotation.md",
     "gap.md",
     "expansion.md",
     "emphasised.md",
-    "deleted.md"
+    "deleted.md",
+    "linkToTextAnnotation.md",
+    "unclear.md"
   ]
 }

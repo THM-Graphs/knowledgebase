@@ -1,4 +1,4 @@
-#inLineAnnotation 
+#inLineAnnotationWithAlternativeText 
 
 - `rend="dots"` for text erased by dots.
 - `rend="crossout"` for text crossed out.

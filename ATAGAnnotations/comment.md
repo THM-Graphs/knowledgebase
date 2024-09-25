@@ -1,1 +1,1 @@
-#inLineAnnotationWithAlternativeText 
+#linkToTextAnnotation 
