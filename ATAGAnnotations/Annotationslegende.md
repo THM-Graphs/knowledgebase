@@ -44,3 +44,8 @@ Properties für Annotationsknoten:
 * commentInternal - Arbeitsnotizen (alle)
 * url - Link auf weitere Quellen (alle)
 
+Technische Annotationstypen
+* Einfache Layoutannotation (kursiv, fett, nonLinear) 
+* Entity-Annotation: Text wird markiert und mit einem Entityknoten verknüpft.
+* Alternativtext-Annotation: Text ist verbessert worden, die vorherige Fassung ist in der Annotation gespeichert.
+* Text-zu-Text-Annotation: Eine Randnotiz, die nicht zum Fließtext gehören, wird mit dem benachbarten Text über eine Annotation verbunden.
