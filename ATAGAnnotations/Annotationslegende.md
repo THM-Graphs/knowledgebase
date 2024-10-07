@@ -33,6 +33,14 @@
 | [[head]]            | head                                                                       | head          | Die Überschrift eines Briefes nennt Absender und/oder Empfänger.                                                                                                                                                                                               | <span class="titulus">Anastasius papa. hildegardi</span> | The heading of a letter names the sender and/or recipient.                                                               | inscriptio                                 | [t[...]t]     | false             | heading                                                                                                                                                                                                                                                                                                                                                                                          |
 | [[line]]            | firstLineOfColumn<br>lastLineOfColumn<br>firstLineOfPage<br>lastLineOfPage | lb            | Der Text im Schriftfeld wird auf durch Liniierung vorgegebenen Zeilen geschrieben.                                                                                                                                                                             | \/                                                       | The text in the title block is written on lines specified by liniation.                                                  | linea                                      | \| \|         | false             | line                                                                                                                                                                                                                                                                                                                                                                                             |
 
+Technical Annotation Types
+
+- Simple Layout (basic) concept /  Annotation (italic, bold, nonLinear, POS)
+- Entity and concept Annotation: Text is highlighted and linked to an entity node.
+- Alternative Text Annotation: Text has been improved, and the previous version is stored in the annotation.
+- Text-to-Text Annotation: A marginal note, which is not part of the main text, is connected to the adjacent text through an annotation.
+
+
 Properties für Annotationsknoten:
 
 - annotationType - Typ der Annotation (alle)
