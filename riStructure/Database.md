@@ -50,7 +50,7 @@ WHERE identifier STARTS WITH "RI VIII"
 	WITH
 	r,
 	"RI VIII" AS department,
-	1 AS volume
+	"1" AS volume
 
 MERGE (c1:Collection {type: "department", name: department})
 
@@ -68,7 +68,7 @@ WHERE identifier STARTS WITH "[Regg. Pfalzgrafen 2]"
 WITH
 	r,
 	"Pfalzgrafen 2" AS department,
-	1 AS volume
+	"1" AS volume
 MERGE (c1:Collection {type: "department", name: department})
 
 MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
@@ -84,7 +84,7 @@ WHERE identifier STARTS WITH "RI XI,"
 WITH
 	r,
 	"RI XI" AS department,
-	1 AS volume
+	"1" AS volume
 MERGE (c1:Collection {type: "department", name: department})
 MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
 MERGE (r)-[:IN_VOLUME]->(c2);
