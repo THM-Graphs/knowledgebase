@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "5cbfcc1f46ec229f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "conflict-files-obsidian-git.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Annotationslegende.md",
+                "file": "conflict-files-obsidian-git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Annotationslegende.md",
+                "file": "conflict-files-obsidian-git.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Annotationslegende.md"
+                "file": "conflict-files-obsidian-git.md"
               }
             }
           },
@@ -155,9 +168,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "43a3a932ed51863c",
+  "active": "5cbfcc1f46ec229f",
   "lastOpenFiles": [
     "Annotationslegende.md",
+    "conflict-files-obsidian-git.md",
     "line.md",
     "paragraph.md",
     "addition.md",

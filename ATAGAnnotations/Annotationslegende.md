@@ -1,7 +1,16 @@
-    # Legende der Annotationen
+# Legende der Annotationen
 
-## Registereinträge
+## Technical Annotation Types
 
+<<<<<<< HEAD
+=======
+- Range Annotations
+    - Simple Layout (basic) concept /  Annotation (italic, bold, nonLinear, POS)
+    - Entity and concept Annotation: Text is highlighted and linked to an entity node.
+    - Zero-Point annotations: Deleted text without replacement (two annotated characters, right and left of deleted text)
+- Alternative Text Annotation: Text has been improved, and the previous version is stored in the annotation.
+- Text-to-Text Annotation: A marginal note, which is not part of the main text, is connected to the adjacent text through an annotation.
+>>>>>>> origin/main
 
 ### Technical Annotation Types
 
@@ -36,9 +45,12 @@
 | [[head]]            | head                                                                       | head          | Die Überschrift eines Briefes nennt Absender und/oder Empfänger.                                                                                                                                                                                               | <span class="titulus">Anastasius papa. hildegardi</span> | The heading of a letter names the sender and/or recipient.                                                               | inscriptio                                 | [t[...]t]     | false             | heading                                                                                                                                                                                                                                                                                                                                                                                          |
 | [[line]]            | firstLineOfColumn<br>lastLineOfColumn<br>firstLineOfPage<br>lastLineOfPage | lb            | Der Text im Schriftfeld wird auf durch Liniierung vorgegebenen Zeilen geschrieben.                                                                                                                                                                             | \/                                                       | The text in the title block is written on lines specified by liniation.                                                  | linea                                      | \| \|         | false             | line                                                                                                                                                                                                                                                                                                                                                                                             |
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> origin/main
 Properties für Annotationsknoten:
 
 - annotationType - Typ der Annotation (alle)
@@ -48,4 +60,7 @@ Properties für Annotationsknoten:
 - comment - Kommentar zur Annotation, z.B. auch ein Subtype (alle)
 - commentInternal - Arbeitsnotizen (alle)
 - url - Link auf weitere Quellen (alle)
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
