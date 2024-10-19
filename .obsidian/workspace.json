@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "fbb6d946c0519918",
+        "id": "c98367212dd35ee2",
         "type": "tabs",
         "children": [
           {
-            "id": "01bff5846a158ae5",
+            "id": "87724b443d38a433",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "riStructure/Database.md",
-                "mode": "preview",
-                "source": true
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Database"
+              "title": "New tab"
             }
           }
         ]
@@ -93,7 +89,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "riStructure/Database.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +98,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Database"
+              "title": "Backlinks"
             }
           },
           {
@@ -112,12 +107,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "riStructure/Database.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Database"
+              "title": "Outgoing links"
             }
           },
           {
@@ -138,11 +132,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "riStructure/Database.md"
-              },
+              "state": {},
               "icon": "lucide-list",
-              "title": "Outline of Database"
+              "title": "Outline"
             }
           },
           {
@@ -174,9 +166,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "01bff5846a158ae5",
+  "active": "87724b443d38a433",
   "lastOpenFiles": [
     "riStructure/Database.md",
+    "riStructure/Entity-Manager preparation query.md",
     "riStructure"
   ]
 }

@@ -1,16 +1,21 @@
-https://datascience.mni.thm.de:7473/browser/
+This query must be executed to prepare the database for the Entity-Manager-Application.
 
-## Department and Volume Nodes from the Regest-Identifier
-
-### Alles löschen
-````cypher
+```cypher
+// alte collections löschen
 MATCH (c1)-[r:IN_DEPARTMENT]-(c2:Collection)-[r2:IN_VOLUME]-(rr)
 SET rr.department = null, rr.volume = null
 DELETE c1,r,c2,r2;
-`````
+// UUIDs vergeben
+MATCH (n:Entity) SET n.uuid = randomUUID();
+// type übersetzen
+MATCH (e:Entity)
+WHERE toLower(e.type) IN ['ort', 'sache', 'ereignis']
+SET e.type = CASE e.type
+    WHEN 'ort' THEN 'place'
+    WHEN 'sache' THEN 'thing'
+    WHEN 'ereignis' THEN 'event'
+END;
 
-### RI III
-```cypher
 //RI III
 MATCH (r:Regesta) WITH r, r.identifier AS identifier
 WHERE identifier STARTS WITH "RI III,"
@@ -25,11 +30,7 @@ SET r.volume = volume, r.department = department
 MERGE (c1:Collection {type: "department", name: department})
 MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
 MERGE (r)-[:IN_VOLUME]->(c2);
-```
 
-
-### RI VII
-```cypher
 //RI VII Department
 MATCH (r:Regesta) WITH r, r.identifier AS identifier
 WHERE identifier STARTS WITH "[RI VII]"
@@ -42,10 +43,21 @@ MERGE (c1:Collection {type: "department", name: department})
 MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
 
 MERGE (r)-[:IN_VOLUME]->(c2);
-```
 
-### RI VIII
-```cypher
+
+//RI VII Department
+MATCH (r:Regesta) WITH r, r.identifier AS identifier
+WHERE identifier STARTS WITH "[RI VII]"
+	WITH r,
+	"RI VII" AS department,
+	split(split(identifier, ' n. ')[0], ' H. ')[1] AS volume
+SET r.volume = volume, r.department = department
+MERGE (c1:Collection {type: "department", name: department})
+
+MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
+
+MERGE (r)-[:IN_VOLUME]->(c2);
+
 //RI VIII Department
 
 MATCH (r:Regesta) WITH r, r.identifier AS identifier
@@ -60,12 +72,8 @@ MERGE (c1:Collection {type: "department", name: department})
 MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
 
 MERGE (r)-[:IN_VOLUME]->(c2);
-```
 
-### Pfalzgrafen 2
-````cypher
 //Regg. Pfalzgrafen 2 Department
-
 MATCH (r:Regesta) WITH r, r.identifier AS identifier
 WHERE identifier STARTS WITH "[Regg. Pfalzgrafen 2]"
 WITH
@@ -78,10 +86,7 @@ MERGE (c1:Collection {type: "department", name: department})
 MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
 
 MERGE (r)-[:IN_VOLUME]->(c2);
-````
 
-### RI XI
-```cypher
 //RI XI Department
 MATCH (r:Regesta) WITH r, r.identifier AS identifier
 WHERE identifier STARTS WITH "RI XI,"
@@ -104,11 +109,7 @@ SET r.volume = volume, r.department = department
 MERGE (c1:Collection {type: "department", name: department})
 MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
 MERGE (r)-[:IN_VOLUME]->(c2);
-````
 
-
-### RI XIII
-```cypher
 //RI XIII
 MATCH (r:Regesta) WITH r, r.identifier AS identifier
 WHERE identifier STARTS WITH "[RI XIII] "
@@ -123,4 +124,8 @@ SET r.volume = volume, r.department = department
 MERGE (c1:Collection {type: "department", name: department})
 MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
 MERGE (r)-[:IN_VOLUME]->(c2);
-`````
+
+
+// Collections uuids geben
+MATCH (n:Collection) SET n.uuid = randomUUID();
+```
