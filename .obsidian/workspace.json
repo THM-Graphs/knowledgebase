@@ -11,10 +11,14 @@
             "id": "87724b443d38a433",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "riStructure/Entity-Manager preparation query.md",
+                "mode": "source",
+                "source": true
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Entity-Manager preparation query"
             }
           }
         ]

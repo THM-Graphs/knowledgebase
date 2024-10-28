@@ -128,4 +128,7 @@ MERGE (r)-[:IN_VOLUME]->(c2);
 
 // Collections uuids geben
 MATCH (n:Collection) SET n.uuid = randomUUID();
+
+// Annotationsknoten erstellen aus APPEARS_IN-Kanten 
+Match (r:Regesta)<-[rel:APPEARS_IN]-(e:Entity) create (a:Annotation {riType: "role", riRole: rel.type}) create (r)-[:HAS_ANNOTATION]->(a)-[:REFERS_TO]->(e) detach delete rel;
 ```
