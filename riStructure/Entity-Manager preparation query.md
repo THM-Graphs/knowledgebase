@@ -16,6 +16,39 @@ SET e.type = CASE e.type
     WHEN 'ereignis' THEN 'event'
 END;
 
+
+//RI I DATENMODELL STIMMT NICHT ÜBEREIN
+MATCH (r:Regesta) WITH r, r.identifier AS identifier
+WHERE identifier STARTS WITH "RI I n." OR identifier STARTS WITH "RI I,"
+WITH
+	r,
+	"RI01" AS department,
+	CASE
+		WHEN identifier STARTS WITH "RI I n." THEN "1"
+		WHEN identifier STARTS WITH "RI I,2" THEN "2"
+		WHEN identifier STARTS WITH "RI I,3" THEN "3"
+		WHEN identifier STARTS WITH "RI I,4" THEN "4"
+		ELSE "no volume"
+	END AS volume
+SET r.volume = volume, r.department = department
+MERGE (c1:Collection {type: "department", name: department})
+MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
+MERGE (r)-[:IN_VOLUME]->(c2);
+
+
+//RI II DATENMODELL STIMMT NICHT ÜBEREIN
+MATCH (r:Regesta) WITH r, r.identifier AS identifier
+WHERE identifier STARTS WITH "RI II,"
+WITH
+	r,
+	"RI02" AS department,
+	split(split(identifier, ' n.')[0], 'RI II,')[1] AS volume
+SET r.volume = volume, r.department = department
+MERGE (c1:Collection {type: "department", name: department})
+MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
+MERGE (r)-[:IN_VOLUME]->(c2);
+
+ 
 //RI III
 MATCH (r:Regesta) WITH r, r.identifier AS identifier
 WHERE identifier STARTS WITH "RI III,"

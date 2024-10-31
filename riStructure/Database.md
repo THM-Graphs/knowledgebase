@@ -16,7 +16,7 @@ MATCH (r:Regesta) WITH r, r.identifier AS identifier
 WHERE identifier STARTS WITH "RI III,"
 WITH
 	r,
-	"RI III" AS department,
+	"RI03" AS department,
 	CASE
 		WHEN identifier STARTS WITH "RI III,5" THEN "5"
 		ELSE split(split(identifier, ' n. ')[0], 'RI III,')[1]
@@ -34,7 +34,7 @@ MERGE (r)-[:IN_VOLUME]->(c2);
 MATCH (r:Regesta) WITH r, r.identifier AS identifier
 WHERE identifier STARTS WITH "[RI VII]"
 	WITH r,
-	"RI VII" AS department,
+	"RI07" AS department,
 	split(split(identifier, ' n. ')[0], ' H. ')[1] AS volume
 SET r.volume = volume, r.department = department
 MERGE (c1:Collection {type: "department", name: department})
@@ -52,7 +52,7 @@ MATCH (r:Regesta) WITH r, r.identifier AS identifier
 WHERE identifier STARTS WITH "RI VIII"
 	WITH
 	r,
-	"RI VIII" AS department,
+	"RI08" AS department,
 	"1" AS volume
 SET r.volume = volume, r.department = department
 MERGE (c1:Collection {type: "department", name: department})
@@ -87,7 +87,7 @@ MATCH (r:Regesta) WITH r, r.identifier AS identifier
 WHERE identifier STARTS WITH "RI XI,"
 WITH
 	r,
-	"RI XI" AS department,
+	"RI11" AS department,
 	"1" AS volume
 SET r.volume = volume, r.department = department
 MERGE (c1:Collection {type: "department", name: department})
@@ -98,7 +98,7 @@ MATCH (r:Regesta) WITH r, r.identifier AS identifier
 WHERE identifier STARTS WITH "RI XI Neubearb"
 WITH
 	r,
-	"RI XI" AS department,
+	"RI11" AS department,
 	split(split(identifier, ' n. ')[0], 'RI XI ')[1] AS volume
 SET r.volume = volume, r.department = department
 MERGE (c1:Collection {type: "department", name: department})
@@ -114,7 +114,7 @@ MATCH (r:Regesta) WITH r, r.identifier AS identifier
 WHERE identifier STARTS WITH "[RI XIII] "
 WITH
 	r,
-	"RI XIII" AS department,
+	"RI13" AS department,
 	CASE
 		WHEN identifier STARTS WITH "[RI XIII] H." THEN split(split(identifier, ' n. ')[0], ' H. ')[1]
 		ELSE split(split(identifier, ' n. ')[0], '[RI XIII] ')[1]
