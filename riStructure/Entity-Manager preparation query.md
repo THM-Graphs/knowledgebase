@@ -64,6 +64,32 @@ MERGE (c1:Collection {type: "department", name: department})
 MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
 MERGE (r)-[:IN_VOLUME]->(c2);
 
+//RI VI
+MATCH (r:Regesta)
+WHERE r.identifier STARTS WITH "RI VI,4,"
+WITH r, r.identifier as identifier,
+"RI06" AS department,
+"4" AS volume
+SET r.volume = volume, r.department = department
+WITH r, volume, department
+MERGE (c1:Collection {type: "department", name: department})
+MERGE (c2:Collection {type: "volume", name: volume})
+MERGE (c2)-[:IN_DEPARTMENT]->(c1)
+MERGE (r)-[:IN_VOLUME]->(c2);
+MATCH (r:Regesta)
+WHERE // r.identifier STARTS WITH "RI VI,4,"
+r.identifier starts with "[RIplus] Regg. Heinrich VII. n. "
+WITH r, r.identifier as identifier,
+"RI06" AS department,
+"[RIplus] Regg. Heinrich VII." AS volume
+MATCH (c1:Collection {type: "department", name: "RI06"})
+SET r.volume = volume, r.department = department
+WITH r, volume, department, c1
+//MERGE (c1:Collection {type: "department", name: department})
+MERGE (c2:Collection {type: "volume", name: volume})
+MERGE (c2)-[:IN_DEPARTMENT]->(c1)
+MERGE (r)-[:IN_VOLUME]->(c2);
+
 //RI VII Department
 MATCH (r:Regesta) WITH r, r.identifier AS identifier
 WHERE identifier STARTS WITH "[RI VII]"
