@@ -4,22 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "fbb6d946c0519918",
+        "id": "c98367212dd35ee2",
         "type": "tabs",
         "children": [
           {
-            "id": "01bff5846a158ae5",
+            "id": "87724b443d38a433",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "riStructure/Database.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": true
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Database"
+            }
+          },
+          {
+            "id": "9bd8a31311b8d577",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "riStructure/Entity-Manager preparation query.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "Entity-Manager preparation query"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -39,7 +56,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Dateiexplorer"
             }
           },
           {
@@ -54,7 +73,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -62,7 +83,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -85,7 +108,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "riStructure/Database.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -93,7 +115,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
             }
           },
           {
@@ -102,10 +126,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "riStructure/Database.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
             }
           },
           {
@@ -116,7 +141,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -124,9 +151,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "riStructure/Database.md"
-              }
+              "state": {},
+              "icon": "lucide-list",
+              "title": "Outline"
             }
           },
           {
@@ -134,7 +161,9 @@
             "type": "leaf",
             "state": {
               "type": "git-view",
-              "state": {}
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
         ],
@@ -142,8 +171,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -156,9 +184,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "01bff5846a158ae5",
+  "active": "9bd8a31311b8d577",
   "lastOpenFiles": [
     "riStructure/Database.md",
+    "riStructure/Entity-Manager preparation query.md",
     "riStructure"
   ]
 }
