@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "riStructure/Database.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
@@ -35,8 +35,7 @@
               "title": "Entity-Manager preparation query"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -185,10 +184,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9bd8a31311b8d577",
+  "active": "87724b443d38a433",
   "lastOpenFiles": [
-    "riStructure/Database.md",
     "riStructure/Entity-Manager preparation query.md",
+    "riStructure/Database.md",
     "riStructure"
   ]
 }

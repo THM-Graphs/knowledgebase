@@ -124,3 +124,15 @@ MERGE (c1:Collection {type: "department", name: department})
 MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
 MERGE (r)-[:IN_VOLUME]->(c2);
 `````
+
+## translate types
+```cypher
+MATCH (e:Entity) WHERE toLower(e.type) IN ['ort', 'sache', 'ereignis'] SET e.type = CASE e.type WHEN 'ort' THEN 'place' WHEN 'sache' THEN 'thing' WHEN 'ereignis' THEN 'event' END;
+````
+
+
+## Datentyp aus `APPEARS_IN`-Kanten erstellen
+```cypher
+// Annotationsknoten erstellen aus APPEARS_IN-Kanten 
+match (r:Regesta)<-[rel:APPEARS_IN]-(e:Entity) create (a:Annotation {riType: "role", riRole: rel.type}) create (r)-[:HAS_ANNOTATION]->(a)-[:REFERS_TO]->(e); detach delete rel;
+`````
