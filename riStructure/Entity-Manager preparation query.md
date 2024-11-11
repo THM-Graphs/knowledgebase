@@ -77,8 +77,7 @@ MERGE (c2:Collection {type: "volume", name: volume})
 MERGE (c2)-[:IN_DEPARTMENT]->(c1)
 MERGE (r)-[:IN_VOLUME]->(c2);
 MATCH (r:Regesta)
-WHERE // r.identifier STARTS WITH "RI VI,4,"
-r.identifier starts with "[RIplus] Regg. Heinrich VII. n. "
+WHERE r.identifier starts with "[RIplus] Regg. Heinrich VII. n. "
 WITH r, r.identifier as identifier,
 "RI06" AS department,
 "[RIplus] Regg. Heinrich VII." AS volume
