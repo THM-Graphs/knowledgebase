@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "riStructure/Database.md",
-                "mode": "preview",
+                "file": "riStructure/Entity-Manager preparation query.md",
+                "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "Database"
+              "title": "Entity-Manager preparation query"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "riStructure/Entity-Manager preparation query.md",
+                "file": "riStructure/Database.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "Entity-Manager preparation query"
+              "title": "Database"
             }
           }
         ]
@@ -186,8 +186,8 @@
   },
   "active": "87724b443d38a433",
   "lastOpenFiles": [
-    "riStructure/Entity-Manager preparation query.md",
     "riStructure/Database.md",
+    "riStructure/Entity-Manager preparation query.md",
     "riStructure"
   ]
 }
