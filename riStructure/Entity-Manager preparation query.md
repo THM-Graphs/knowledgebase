@@ -42,7 +42,10 @@ WHERE identifier STARTS WITH "RI II,"
 WITH
 	r,
 	"RI02" AS department,
-	split(split(identifier, ' n.')[0], 'RI II,')[1] AS volume
+	CASE
+		WHEN identifier STARTS WITH "RI II,5" THEN "Papstregesten"
+		ELSE "1-4"
+	END AS volume
 SET r.volume = volume, r.department = department
 MERGE (c1:Collection {type: "department", name: department})
 MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
@@ -64,17 +67,61 @@ MERGE (c1:Collection {type: "department", name: department})
 MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
 MERGE (r)-[:IN_VOLUME]->(c2);
 
-//RI VI
-MATCH (r:Regesta)
-WHERE r.identifier STARTS WITH "RI VI,4,"
-WITH r, r.identifier as identifier,
-"RI06" AS department,
-"4" AS volume
+
+//RI IV
+MATCH (r:Regesta) WITH r, r.identifier AS identifier
+WHERE identifier STARTS WITH "RI IV,"
+WITH
+	r,
+	"RI04" AS department,
+	CASE
+		WHEN identifier STARTS WITH "RI IV,1,1" THEN "Lothar III."
+		WHEN identifier STARTS WITH "RI IV,1,2" THEN "Konrad III."
+		WHEN identifier STARTS WITH "RI IV,2," THEN "Friedrich I."
+		WHEN identifier STARTS WITH "RI IV,3" THEN "Heinrich VI."
+		WHEN identifier STARTS WITH "RI IV,4,4," THEN "Papstregesten"
+		ELSE split(split(identifier, ' n. ')[0], 'RI IV,')[1]
+	END AS volume
 SET r.volume = volume, r.department = department
-WITH r, volume, department
 MERGE (c1:Collection {type: "department", name: department})
-MERGE (c2:Collection {type: "volume", name: volume})
-MERGE (c2)-[:IN_DEPARTMENT]->(c1)
+MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
+MERGE (r)-[:IN_VOLUME]->(c2);
+
+
+//RI V
+MATCH (r:Regesta) WITH r, r.identifier AS identifier
+WHERE identifier STARTS WITH "RI V,"
+WITH
+	r,
+	"RI05" AS department,
+	CASE
+		WHEN identifier STARTS WITH "RI V,1," THEN "Staufer, Kaiser und Könige"
+		WHEN identifier STARTS WITH "RI V,2," THEN "Staufer, Päpste und Reichssachen"
+		WHEN identifier STARTS WITH "RI V,4,6" THEN "Staufer, Nachträge und Ergänzungen"
+		WHEN identifier STARTS WITH "RI V,4,1" THEN "Staufer, Nachträge zu Friedrich II. und Konrad IV."
+		ELSE split(split(identifier, ' n. ')[0], 'RI V,')[1]
+	END AS volume
+SET r.volume = volume, r.department = department
+MERGE (c1:Collection {type: "department", name: department})
+MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
+MERGE (r)-[:IN_VOLUME]->(c2);
+
+
+//RI VI
+MATCH (r:Regesta) WITH r, r.identifier AS identifier
+WHERE identifier STARTS WITH "RI VI,,"
+WITH
+	r,
+	"RI06" AS department,
+	CASE
+		WHEN identifier STARTS WITH "RI VI,4," THEN "4"
+		WHEN identifier STARTS WITH "RI VI,1" THEN "1"
+		WHEN identifier STARTS WITH "RI VI,2" THEN "2"
+		ELSE split(split(identifier, ' n. ')[0], 'RI V,')[1]
+	END AS volume
+SET r.volume = volume, r.department = department
+MERGE (c1:Collection {type: "department", name: department})
+MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
 MERGE (r)-[:IN_VOLUME]->(c2);
 MATCH (r:Regesta)
 WHERE r.identifier starts with "[RIplus] Regg. Heinrich VII. n. "
@@ -89,6 +136,24 @@ MERGE (c2:Collection {type: "volume", name: volume})
 MERGE (c2)-[:IN_DEPARTMENT]->(c1)
 MERGE (r)-[:IN_VOLUME]->(c2);
 
+
+  
+// [Regesta Habsburgica 3]
+MATCH (r:Regesta) WITH r, r.identifier AS identifier
+WHERE identifier STARTS WITH "[Regesta Habsburgica 3]"
+WITH
+	r,
+	"Regesta Habsburgica 3" AS department,
+	CASE
+		WHEN identifier STARTS WITH "[Regesta Habsburgica 3]" THEN "Friedrich der Schöne"
+		ELSE split(split(identifier, ' n. ')[0], '[Regesta Habsburgica 3]')[1]
+	END AS volume
+SET r.volume = volume, r.department = department
+MERGE (c1:Collection {type: "department", name: department})
+MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
+MERGE (r)-[:IN_VOLUME]->(c2);
+
+
 //RI VII Department
 MATCH (r:Regesta) WITH r, r.identifier AS identifier
 WHERE identifier STARTS WITH "[RI VII]"
@@ -101,6 +166,7 @@ MERGE (c1:Collection {type: "department", name: department})
 MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
 
 MERGE (r)-[:IN_VOLUME]->(c2);
+
 
 
 //RI VIII Department
@@ -155,6 +221,21 @@ MERGE (c1:Collection {type: "department", name: department})
 MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
 MERGE (r)-[:IN_VOLUME]->(c2);
 
+
+//RI XII Department
+MATCH (r:Regesta) WITH r, r.identifier AS identifier
+WHERE identifier STARTS WITH "RI XI "
+WITH
+	r,
+	"RI12" AS department,
+	"1" AS volume
+	SET r.volume = volume, r.department = department
+MERGE (c1:Collection {type: "department", name: department})
+MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
+MERGE (r)-[:IN_VOLUME]->(c2);
+
+
+
 //RI XIII
 MATCH (r:Regesta) WITH r, r.identifier AS identifier
 WHERE identifier STARTS WITH "[RI XIII] "
@@ -165,6 +246,30 @@ WITH
 		WHEN identifier STARTS WITH "[RI XIII] H." THEN split(split(identifier, ' n. ')[0], ' H. ')[1]
 		ELSE split(split(identifier, ' n. ')[0], '[RI XIII] ')[1]
 	END AS volume
+SET r.volume = volume, r.department = department
+MERGE (c1:Collection {type: "department", name: department})
+MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
+MERGE (r)-[:IN_VOLUME]->(c2);
+MATCH (r:Regesta) WITH r, r.identifier AS identifier
+WHERE identifier STARTS WITH "Chmel"
+WITH
+	r,
+	"RI13" AS department,
+	"Chmel" AS volume
+SET r.volume = volume, r.department = department
+MERGE (c1:Collection {type: "department", name: department})
+MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
+MERGE (r)-[:IN_VOLUME]->(c2);
+
+						 
+						 
+//RI XIV
+MATCH (r:Regesta) WITH r, r.identifier AS identifier
+WHERE identifier STARTS WITH "RI XIV,"
+WITH
+	r,
+	"RI14" AS department,
+	"Maximilian I." AS volume
 SET r.volume = volume, r.department = department
 MERGE (c1:Collection {type: "department", name: department})
 MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
@@ -180,5 +285,8 @@ Match (r:Regesta)<-[rel:APPEARS_IN]-(e:Entity) create (a:Annotation {riType: "ro
 // Entities bekommen department und volume property
 MATCH (n:Entity)<-[:REFERS_TO]-(a:Annotation)<-[:HAS_ANNOTATION]-(r:Regesta)
 SET n.volume = r.volume, n.department = r.department;
+
+// Entities bekommen uuids
+MATCH (n:Entity) SET n.uuid = randomUUID();
 
 ```
