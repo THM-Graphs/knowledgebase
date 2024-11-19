@@ -6,7 +6,9 @@ MATCH (c1)-[r:IN_DEPARTMENT]-(c2:Collection)-[r2:IN_VOLUME]-(rr)
 SET rr.department = null, rr.volume = null
 DELETE c1,r,c2,r2;
 // UUIDs vergeben
-MATCH (n:Entity) SET n.uuid = randomUUID();
+MATCH (n:Entity) 
+WHERE n.uuid IS NULL
+SET n.uuid = randomUUID();
 // type übersetzen
 MATCH (e:Entity)
 WHERE toLower(e.type) IN ['ort', 'sache', 'ereignis']
@@ -277,16 +279,22 @@ MERGE (r)-[:IN_VOLUME]->(c2);
 
 
 // Collections uuids geben
-MATCH (n:Collection) SET n.uuid = randomUUID();
+MATCH (n:Collection) 
+WHERE n.uuid IS NULL
+SET n.uuid = randomUUID();
 
 // Annotationsknoten erstellen aus APPEARS_IN-Kanten 
-Match (r:Regesta)<-[rel:APPEARS_IN]-(e:Entity) create (a:Annotation {riType: "role", riRole: rel.type}) create (r)-[:HAS_ANNOTATION]->(a)-[:REFERS_TO]->(e) detach delete rel;
+Match (r:Regesta)<-[rel:APPEARS_IN]-(e:Entity) 
+create (a:Annotation {riType: "role", riRole: rel.type}) 
+create (r)-[:HAS_ANNOTATION]->(a)-[:REFERS_TO]->(e) 
+detach delete rel;
 
 // Entities bekommen department und volume property
 MATCH (n:Entity)<-[:REFERS_TO]-(a:Annotation)<-[:HAS_ANNOTATION]-(r:Regesta)
 SET n.volume = r.volume, n.department = r.department;
 
 // Entities bekommen uuids
-MATCH (n:Entity) SET n.uuid = randomUUID();
-
+MATCH (n:Entity) 
+WHERE n.uuid IS NULL
+SET n.uuid = randomUUID();
 ```
