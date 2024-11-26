@@ -4,35 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "c98367212dd35ee2",
+        "id": "e31b95838b3749d7",
         "type": "tabs",
         "children": [
           {
-            "id": "87724b443d38a433",
+            "id": "3a40e967018456eb",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "riStructure/Entity-Manager preparation query.md",
+                "file": "riStructure/Editionsumgebungen.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "Entity-Manager preparation query"
-            }
-          },
-          {
-            "id": "9bd8a31311b8d577",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "riStructure/Database.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "Database"
+              "title": "Editionsumgebungen"
             }
           }
         ]
@@ -183,8 +169,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "87724b443d38a433",
+  "active": "3a40e967018456eb",
   "lastOpenFiles": [
+    "riStructure/Editionsumgebungen.md",
     "riStructure/Database.md",
     "riStructure/Entity-Manager preparation query.md",
     "riStructure"

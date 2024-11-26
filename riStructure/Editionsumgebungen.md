@@ -1,0 +1,4 @@
+- Typo3 mit CHF2
+- Ediarum mit Entity-Manager
+- ATAG-Editor mit Publikationsseite
+- Faust mit Export nach XML/Typo3

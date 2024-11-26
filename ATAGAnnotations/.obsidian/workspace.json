@@ -4,49 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "6bc89c91f5b97a07",
+        "id": "263655a0cd1883a8",
         "type": "tabs",
         "children": [
           {
-            "id": "43a3a932ed51863c",
+            "id": "2daf0ba766409663",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Annotationslegende.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Annotationslegende"
-            }
-          },
-          {
-            "id": "4d0ec365bcf9ea67",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.7.4"
-              },
-              "icon": "lucide-file",
-              "title": "Release Notes 1.7.4"
-            }
-          },
-          {
-            "id": "385ee374c5e7408c",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.7.5"
-              },
-              "icon": "lucide-file",
-              "title": "Release Notes 1.7.5"
+              "title": "Neuer Tab"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -198,7 +169,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "385ee374c5e7408c",
+  "active": "2daf0ba766409663",
   "lastOpenFiles": [
     "Annotationslegende.md",
     "conflict-files-obsidian-git.md",
