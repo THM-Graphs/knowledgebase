@@ -4,24 +4,49 @@
     "type": "split",
     "children": [
       {
-        "id": "e31b95838b3749d7",
+        "id": "c98367212dd35ee2",
         "type": "tabs",
         "children": [
           {
-            "id": "3a40e967018456eb",
+            "id": "87724b443d38a433",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "riStructure/Editionsumgebungen.md",
+                "file": "riStructure/Entity-Manager preparation query.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "Entity-Manager preparation query"
+            }
+          },
+          {
+            "id": "9bd8a31311b8d577",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "riStructure/Database.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "Editionsumgebungen"
+              "title": "Database"
+            }
+          },
+          {
+            "id": "450bf6354a54d85b",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -43,7 +68,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-folder-closed",
-              "title": "Dateiexplorer"
+              "title": "Files"
             }
           },
           {
@@ -156,24 +181,25 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Schnellauswahl öffnen": false,
-      "graph:Graphen-Ansicht öffnen": false,
-      "canvas:Neuen Canvas erstellen": false,
-      "daily-notes:Heutige Notiz öffnen": false,
-      "templates:Vorlage einfügen": false,
-      "command-palette:Befehlspalette öffnen": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "3a40e967018456eb",
+  "active": "9bd8a31311b8d577",
   "lastOpenFiles": [
-    "riStructure/Editionsumgebungen.md",
-    "riStructure/Database.md",
     "riStructure/Entity-Manager preparation query.md",
+    "riStructure/Database.md",
+    "riStructure/Editionsumgebungen.md",
     "riStructure"
   ]
 }

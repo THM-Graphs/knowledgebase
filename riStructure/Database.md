@@ -4,7 +4,7 @@ https://datascience.mni.thm.de:7473/browser/
 
 ### Alles löschen
 ````cypher
-MATCH (c1)-[r:IN_DEPARTMENT]-(c2:Collection)-[r2:IN_VOLUME]-(rr)
+MATCH (c1)-[r:PART_OF]-(c2:Collection)-[r2:PART_OF]-(rr)
 SET rr.department = null, rr.volume = null
 DELETE c1,r,c2,r2;
 `````
@@ -22,9 +22,9 @@ WITH
 		ELSE split(split(identifier, ' n. ')[0], 'RI III,')[1]
 	END AS volume
 SET r.volume = volume, r.department = department
-MERGE (c1:Collection {type: "department", name: department})
-MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
-MERGE (r)-[:IN_VOLUME]->(c2);
+MERGE (c1:Collection {type: "department", label: department})
+MERGE (c2:Collection {type: "volume", label: volume})-[:PART_OF]->(c1)
+MERGE (r)-[:PART_OF]->(c2);
 ```
 
 
@@ -37,11 +37,11 @@ WHERE identifier STARTS WITH "[RI VII]"
 	"RI07" AS department,
 	split(split(identifier, ' n. ')[0], ' H. ')[1] AS volume
 SET r.volume = volume, r.department = department
-MERGE (c1:Collection {type: "department", name: department})
+MERGE (c1:Collection {type: "department", label: department})
 
-MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
+MERGE (c2:Collection {type: "volume", label: volume})-[:PART_OF]->(c1)
 
-MERGE (r)-[:IN_VOLUME]->(c2);
+MERGE (r)-[:PART_OF]->(c2);
 ```
 
 ### RI VIII
@@ -55,11 +55,11 @@ WHERE identifier STARTS WITH "RI VIII"
 	"RI08" AS department,
 	"1" AS volume
 SET r.volume = volume, r.department = department
-MERGE (c1:Collection {type: "department", name: department})
+MERGE (c1:Collection {type: "department", label: department})
 
-MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
+MERGE (c2:Collection {type: "volume", label: volume})-[:PART_OF]->(c1)
 
-MERGE (r)-[:IN_VOLUME]->(c2);
+MERGE (r)-[:PART_OF]->(c2);
 ```
 
 ### Pfalzgrafen 2
@@ -73,11 +73,11 @@ WITH
 	"Pfalzgrafen 2" AS department,
 	"1" AS volume
 SET r.volume = volume, r.department = department
-MERGE (c1:Collection {type: "department", name: department})
+MERGE (c1:Collection {type: "department", label: department})
 
-MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
+MERGE (c2:Collection {type: "volume", label: volume})-[:PART_OF]->(c1)
 
-MERGE (r)-[:IN_VOLUME]->(c2);
+MERGE (r)-[:PART_OF]->(c2);
 ````
 
 ### RI XI
@@ -90,9 +90,9 @@ WITH
 	"RI11" AS department,
 	"1" AS volume
 SET r.volume = volume, r.department = department
-MERGE (c1:Collection {type: "department", name: department})
-MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
-MERGE (r)-[:IN_VOLUME]->(c2);
+MERGE (c1:Collection {type: "department", label: department})
+MERGE (c2:Collection {type: "volume", label: volume})-[:PART_OF]->(c1)
+MERGE (r)-[:PART_OF]->(c2);
 
 MATCH (r:Regesta) WITH r, r.identifier AS identifier
 WHERE identifier STARTS WITH "RI XI Neubearb"
@@ -101,9 +101,9 @@ WITH
 	"RI11" AS department,
 	split(split(identifier, ' n. ')[0], 'RI XI ')[1] AS volume
 SET r.volume = volume, r.department = department
-MERGE (c1:Collection {type: "department", name: department})
-MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
-MERGE (r)-[:IN_VOLUME]->(c2);
+MERGE (c1:Collection {type: "department", label: department})
+MERGE (c2:Collection {type: "volume", label: volume})-[:PART_OF]->(c1)
+MERGE (r)-[:PART_OF]->(c2);
 ````
 
 
@@ -120,9 +120,9 @@ WITH
 		ELSE split(split(identifier, ' n. ')[0], '[RI XIII] ')[1]
 	END AS volume
 SET r.volume = volume, r.department = department
-MERGE (c1:Collection {type: "department", name: department})
-MERGE (c2:Collection {type: "volume", name: volume})-[:IN_DEPARTMENT]->(c1)
-MERGE (r)-[:IN_VOLUME]->(c2);
+MERGE (c1:Collection {type: "department", label: department})
+MERGE (c2:Collection {type: "volume", label: volume})-[:PART_OF]->(c1)
+MERGE (r)-[:PART_OF]->(c2);
 `````
 
 ## translate types
