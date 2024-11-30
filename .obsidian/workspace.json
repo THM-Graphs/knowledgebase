@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "riStructure/Entity-Manager preparation query.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
@@ -33,16 +33,6 @@
               },
               "icon": "lucide-file",
               "title": "Database"
-            }
-          },
-          {
-            "id": "450bf6354a54d85b",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
             }
           }
         ],

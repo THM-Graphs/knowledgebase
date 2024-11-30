@@ -4,7 +4,7 @@ https://datascience.mni.thm.de:7473/browser/
 
 ### Alles löschen
 ````cypher
-MATCH (c1)-[r:PART_OF]-(c2:Collection)-[r2:PART_OF]-(rr)
+MATCH (c1:Collection {type: "department"})<-[r:PART_OF]-(c2:Collection {type: "volume"})<-[r2:PART_OF]-(rr)
 SET rr.department = null, rr.volume = null
 DELETE c1,r,c2,r2;
 `````

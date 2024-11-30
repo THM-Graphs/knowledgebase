@@ -2,7 +2,7 @@ This query must be executed to prepare the database for the Entity-Manager-Appli
 
 ```cypher
 // alte collections löschen
-MATCH (c1)-[r:PART_OF]-(c2:Collection)-[r2:PART_OF]-(rr)
+MATCH (c1:Collection {type: "department"})<-[r:PART_OF]-(c2:Collection {type: "volume"})<-[r2:PART_OF]-(rr)
 SET rr.department = null, rr.volume = null
 DELETE c1,r,c2,r2;
 // UUIDs vergeben
