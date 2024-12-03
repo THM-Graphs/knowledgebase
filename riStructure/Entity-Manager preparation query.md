@@ -17,7 +17,9 @@ SET e.type = CASE e.type
     WHEN 'sache' THEN 'thing'
     WHEN 'ereignis' THEN 'event'
 END;
-
+CREATE INDEX IF NOT EXISTS FOR (n:Collection) ON (n.type);
+CREATE INDEX IF NOT EXISTS FOR (n:Collection) ON (n.department);
+CREATE INDEX IF NOT EXISTS FOR (n:Collection) ON (n.uuid);
 
 //RI I DATENMODELL STIMMT NICHT ÜBEREIN
 MATCH (r:Regesta) WITH r, r.identifier AS identifier
