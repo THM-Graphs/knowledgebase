@@ -20,6 +20,8 @@ END;
 CREATE INDEX IF NOT EXISTS FOR (n:Collection) ON (n.type);
 CREATE INDEX IF NOT EXISTS FOR (n:Collection) ON (n.department);
 CREATE INDEX IF NOT EXISTS FOR (n:Collection) ON (n.uuid);
+CREATE INDEX IF NOT EXISTS FOR (n:Entity) ON (n.parentId);
+											  CREATE FULLTEXT INDEX search IF NOT EXISTS FOR (n:Entity) ON EACH [n.label, n.origLabel];
 
 //RI I DATENMODELL STIMMT NICHT ÜBEREIN
 MATCH (r:Regesta) WITH r, r.identifier AS identifier
@@ -310,7 +312,5 @@ SET n.uuid = randomUUID();
 // Adds the Regesta to the collection model
 MATCH (n:Regesta) SET n:Collection, n.type = "regesta";
 
-// search index
-CREATE FULLTEXT INDEX search IF NOT EXISTS FOR (n:Entity) ON EACH [n.label, n.origLabel];
 
 ```
