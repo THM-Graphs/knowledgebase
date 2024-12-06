@@ -143,4 +143,10 @@ MATCH (e:Entity), (e2:Entity)
 OPTIONAL MATCH (e2)-[rel1]-(:Property), (e2)-[rel2]-(a:Annotation)-[rel3]-(:Regesta)
 WHERE e.label = e2.label AND e.department = e2.department AND e.volume = e2.volume AND e.uuid <> e2.uuid
 RETURN e2, rel1, rel2, a, rel3;
+
+
+// ODER
+MATCH (e:Entity), (e2:Entity), (e2)-[rel1]-(:Property), (e2)-[rel2]-(a:Annotation)-[rel3]-(:Regesta)
+WHERE e.label = e2.label AND e.department = e2.department AND e.volume = e2.volume AND e.uuid <> e2.uuid
+DELETE e2, rel1, rel2, a, rel3;
 ```
