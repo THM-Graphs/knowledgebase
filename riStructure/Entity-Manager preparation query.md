@@ -320,5 +320,8 @@ SET n.uuid = randomUUID();
 // Adds the Regesta to the collection model
 MATCH (n:Regesta) SET n:Collection, n.type = "regesta";
 
+// Deletes any direct connection between entities and regesta
+MATCH (n:Entity)-[rel]->(r:Regesta) delete rel;
+
 
 ```
