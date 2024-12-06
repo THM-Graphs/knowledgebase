@@ -295,9 +295,11 @@ detach delete rel;
 MATCH (n:Entity)<-[:REFERS_TO]-(a:Annotation)<-[:HAS_ANNOTATION]-(r:Regesta)
 OPTIONAL MATCH (n)-[rel1]->(n2:Entity)
 OPTIONAL MATCH (n)-[:HAS_PROPERTY]->(:Property)-[:REFERS_TO]->(n3:Entity)
+OPTIONAL MATCH (n4:Entity) WHERE n4.parentId = n.xmlId
 SET n.volume = r.volume, n.department = r.department
 SET n2.volume = r.volume, n2.department = r.department
-SET n3.volume = r.volume, n3.department = r.department;
+SET n3.volume = r.volume, n3.department = r.department
+SET n4.volume = r.volume, n4.department = r.department;
 
 // Entities bekommen uuids
 MATCH (n:Entity) 
