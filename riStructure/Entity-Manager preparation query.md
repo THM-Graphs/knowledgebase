@@ -117,7 +117,7 @@ MERGE (r)-[:PART_OF]->(c2);
 
 //RI VI
 MATCH (r:Regesta) WITH r, r.identifier AS identifier
-WHERE identifier STARTS WITH "RI VI,,"
+WHERE identifier STARTS WITH "RI VI,"
 WITH
 	r,
 	"RI06" AS department,
