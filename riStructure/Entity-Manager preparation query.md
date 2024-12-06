@@ -21,6 +21,8 @@ CREATE INDEX IF NOT EXISTS FOR (n:Collection) ON (n.type);
 CREATE INDEX IF NOT EXISTS FOR (n:Collection) ON (n.department);
 CREATE INDEX IF NOT EXISTS FOR (n:Collection) ON (n.uuid);
 CREATE INDEX IF NOT EXISTS FOR (n:Entity) ON (n.parentId);
+CREATE INDEX IF NOT EXISTS FOR (n:Entity) ON (n.department);
+CREATE INDEX IF NOT EXISTS FOR (n:Entity) ON (n.volume);
 CREATE FULLTEXT INDEX search IF NOT EXISTS FOR (n:Entity) ON EACH [n.label, n.origLabel];
 
 //RI I DATENMODELL STIMMT NICHT ÜBEREIN
