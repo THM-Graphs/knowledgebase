@@ -294,6 +294,12 @@ Match (r:Regesta)<-[rel:APPEARS_IN]-(e:Entity)
 create (a:Annotation {riType: "role", riRole: rel.type}) 
 create (r)-[:HAS_ANNOTATION]->(a)-[:REFERS_TO]->(e) 
 detach delete rel;
+MATCH (n:Entity)-[rel]->(n2:Entity)
+
+// Create property connection between Entities
+MERGE (n)-[:HAS_PROPERTY]->(:Property { type: TYPE(rel), uuid: randomUUID(), namespace: "implied_change_later" })-[:REFERS_TO]->(n2)
+DELETE rel;
+
 
 // Entities bekommen department und volume property
 MATCH (n:Entity)<-[:REFERS_TO]-(a:Annotation)<-[:HAS_ANNOTATION]-(r:Regesta)
