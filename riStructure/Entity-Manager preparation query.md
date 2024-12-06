@@ -293,10 +293,22 @@ detach delete rel;
 
 // Entities bekommen department und volume property
 MATCH (n:Entity)<-[:REFERS_TO]-(a:Annotation)<-[:HAS_ANNOTATION]-(r:Regesta)
-SET n.volume = r.volume, n.department = r.department;
+OPTIONAL MATCH (n)-[rel1]->(n2:Entity)
+OPTIONAL MATCH (n)-[:HAS_PROPERTY]->(:Property)-[:REFERS_TO]->(n3:Entity)
+SET n.volume = r.volume, n.department = r.department
+SET n2.volume = r.volume, n2.department = r.department
+SET n3.volume = r.volume, n3.department = r.department;
 
 // Entities bekommen uuids
 MATCH (n:Entity) 
 WHERE n.uuid IS NULL
 SET n.uuid = randomUUID();
+
+
+// Adds the Regesta to the collection model
+MATCH (n:Regesta) SET n:Collection, n.type = "regesta";
+
+// search index
+CREATE FULLTEXT INDEX search IF NOT EXISTS FOR (n:Entity) ON EACH [n.label, n.origLabel];
+
 ```
