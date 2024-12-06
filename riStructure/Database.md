@@ -137,4 +137,10 @@ MATCH (e:Entity) WHERE toLower(e.type) IN ['ort', 'sache', 'ereignis'] SET e.typ
 match (r:Regesta)<-[rel:APPEARS_IN]-(e:Entity) create (a:Annotation {riType: "role", riRole: rel.type}) create (r)-[:HAS_ANNOTATION]->(a)-[:REFERS_TO]->(e); detach delete rel;
 `````
 
-## DOppelte 
+## Doppelte Entities löschen
+```cypher
+MATCH (e:Entity), (e2:Entity)
+OPTIONAL MATCH (e2)-[rel1]-(:Property), (e2)-[rel2]-(a:Annotation)-[rel3]-(:Regesta)
+WHERE e.label = e2.label AND e.department = e2.department AND e.volume = e2.volume AND e.uuid <> e2.uuid
+RETURN e2, rel1, rel2, a, rel3;
+```
