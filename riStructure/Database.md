@@ -136,3 +136,5 @@ MATCH (e:Entity) WHERE toLower(e.type) IN ['ort', 'sache', 'ereignis'] SET e.typ
 // Annotationsknoten erstellen aus APPEARS_IN-Kanten 
 match (r:Regesta)<-[rel:APPEARS_IN]-(e:Entity) create (a:Annotation {riType: "role", riRole: rel.type}) create (r)-[:HAS_ANNOTATION]->(a)-[:REFERS_TO]->(e); detach delete rel;
 `````
+
+## DOppelte 
