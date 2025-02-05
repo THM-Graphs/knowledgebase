@@ -347,7 +347,7 @@ MATCH (n:Regesta) SET n:Collection, n.type = "regesta";
 // Deletes any direct connection between entities and regesta
 MATCH (n:Entity)-[rel]->(r:Regesta) delete rel;
 
-
+// numberOfChilds wird ermittelt
 MATCH (n:Entity)
 OPTIONAL MATCH (n)<-[:REFERS_TO]-(:Property {type: "IS_SUB_OF"})<-[:HAS_PROPERTY]-(sub:Entity)
 WITH n, COLLECT(sub) AS directChildren
