@@ -305,42 +305,33 @@ MERGE (n)-[:HAS_PROPERTY]->(:Property { type: TYPE(rel), uuid: randomUUID(), nam
 DELETE rel;
 
 
-// Entities bekommen department und volume property
-MATCH (n:Entity)<-[:REFERS_TO]-(a:Annotation)<-[:HAS_ANNOTATION]-(r:Regesta)
-OPTIONAL MATCH (n)-[rel1]->(n2:Entity)
-OPTIONAL MATCH (n)-[:HAS_PROPERTY]->(:Property)-[:REFERS_TO]->(n3:Entity)
-OPTIONAL MATCH (n4:Entity) WHERE n4.parentId = n.xmlId
-SET n.volume = r.volume, n.department = r.department
-SET n2.volume = r.volume, n2.department = r.department
-SET n3.volume = r.volume, n3.department = r.department
-SET n4.volume = r.volume, n4.department = r.department;
+// Entities bekommen department und volume property (old)
+//MATCH (n:Entity)<-[:REFERS_TO]-(a:Annotation)<-[:HAS_ANNOTATION]-(r:Regesta)
+//OPTIONAL MATCH (n)-[rel1]->(n2:Entity)
+//OPTIONAL MATCH (n)-[:HAS_PROPERTY]->(:Property)-[:REFERS_TO]->(n3:Entity)
+//OPTIONAL MATCH (n4:Entity) WHERE n4.parentId = n.xmlId
+//SET n.volume = r.volume, n.department = r.department
+//SET n2.volume = r.volume, n2.department = r.department
+//SET n3.volume = r.volume, n3.department = r.department
+//SET n4.volume = r.volume, n4.department = r.department;
 
 
+// Entities bekommen department und volume property (beides listen)
 MATCH (n:Entity)<-[:REFERS_TO]-(a:Annotation)<-[:HAS_ANNOTATION]-(r:Regesta)
 OPTIONAL MATCH (n)-[rel1]->(n2:Entity)
 OPTIONAL MATCH (n)-[:HAS_PROPERTY]->(:Property)-[:REFERS_TO]->(n3:Entity)
 OPTIONAL MATCH (n4:Entity) WHERE n4.parentId = n.xmlId
 WITH n, n2, n3, n4, r,
-apoc.coll.toSet(apoc.coll.removeAll(coalesce(n.volume, []) + [r.volume], [null])) AS newVolume,
-
-apoc.coll.toSet(apoc.coll.removeAll(coalesce(n.department, []) + [r.department], [null])) AS newDepartment
-
-  
-
+	apoc.coll.toSet(apoc.coll.removeAll(coalesce(n.volume, []) + [r.volume], [null])) AS newVolume,
+	apoc.coll.toSet(apoc.coll.removeAll(coalesce(n.department, []) + [r.department], [null])) AS newDepartment
+	
 SET n.volume = CASE WHEN size(newVolume) > 0 THEN newVolume ELSE NULL END,
-
 n.department = CASE WHEN size(newDepartment) > 0 THEN newDepartment ELSE NULL END
-
 SET n2.volume = CASE WHEN size(newVolume) > 0 THEN newVolume ELSE NULL END,
-
 n2.department = CASE WHEN size(newDepartment) > 0 THEN newDepartment ELSE NULL END
-
 SET n3.volume = CASE WHEN size(newVolume) > 0 THEN newVolume ELSE NULL END,
-
 n3.department = CASE WHEN size(newDepartment) > 0 THEN newDepartment ELSE NULL END
-
 SET n4.volume = CASE WHEN size(newVolume) > 0 THEN newVolume ELSE NULL END,
-
 n4.department = CASE WHEN size(newDepartment) > 0 THEN newDepartment ELSE NULL END;
 
 
