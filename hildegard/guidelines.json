@@ -32,9 +32,20 @@
           "visible": true
         }
       ]
+    },
+    "comment": {
+      "additionalLabel": "Comment",
+      "properties": [
+        {
+          "name": "label",
+          "type": "text",
+          "required": true,
+          "editable": false,
+          "visible": false
+        }
+      ]
     }
   },
-
   "annotations": {
     "types": [
       {
@@ -206,7 +217,7 @@
         "category": "project",
         "defaultSelected": true,
         "isZeroPoint": false,
-        "hasAdditionalText": true
+        "hasAdditionalTexts": true
       },
       {
         "type": "entity",
@@ -284,6 +295,7 @@
         "category": "roles",
         "nodeLabel": "Role"
       }
-    ]
+    ],
+    "additionalTexts": ["Comment"]
   }
 }
