@@ -348,4 +348,19 @@ MATCH (n:Regesta) SET n:Collection, n.type = "regesta";
 MATCH (n:Entity)-[rel]->(r:Regesta) delete rel;
 
 
+MATCH (n:Entity)
+OPTIONAL MATCH (n)<-[:REFERS_TO]-(:Property {type: "IS_SUB_OF"})<-[:HAS_PROPERTY]-(sub:Entity)
+WITH n, COLLECT(sub) AS directChildren
+CALL {
+	WITH n
+	MATCH (n)<-[:REFERS_TO]-(:Property {type: "IS_SUB_OF"})<-[:HAS_PROPERTY]-(sub:Entity)
+	CALL apoc.path.subgraphNodes(sub, {
+		relationshipFilter: "HAS_PROPERTY>|<REFERS_TO",
+		minLevel: 1
+	}) YIELD node
+	RETURN COUNT(DISTINCT node) AS totalSubEntities
+}
+SET n.numberOfChilds = totalSubEntities
+
+
 ```
