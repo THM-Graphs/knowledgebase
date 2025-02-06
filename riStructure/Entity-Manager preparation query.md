@@ -365,71 +365,36 @@ SET n.numberOfChilds = totalSubEntities
 
 
 MATCH (c:Collection)
-
 WITH c, [
-
-"title",
-
-"identifier",
-
-"date",
-
-"placeOfIssue",
-
-"summary",
-
-"originalDate",
-
-"versoNote",
-
-"witnesses",
-
-"incipit",
-
-"clerk",
-
-"recipient",
-
-"chancellor",
-
-"archivalHistory",
-
-"literature",
-
-"commentary",
-
-"annotations",
-
-"footnotes"
-
+	"title",
+	"identifier",
+	"date",
+	"placeOfIssue",
+	"summary",
+	"originalDate",
+	"versoNote",
+	"witnesses",
+	"incipit",
+	"clerk",
+	"recipient",
+	"chancellor",
+	"archivalHistory",
+	"literature",
+	"commentary",
+	"annotations",
+	"footnotes"
 ] AS textProperties
-
-  
-
 UNWIND textProperties AS prop
-
 WITH c, prop, c[prop] AS textValue
 
 WHERE textValue IS NOT NULL
-
-  
-
 CREATE (t:Text { content: textValue, property: prop })
-
 MERGE (t)-[:PART_OF]->(c)
-
-  
-
 WITH c, COLLECT(t) AS textNodes
-
 WHERE SIZE(textNodes) > 1
 
-  
-
 UNWIND RANGE(0, SIZE(textNodes)-2) AS i
-
 WITH textNodes[i] AS current, textNodes[i+1] AS next
-
 MERGE (current)-[:NEXT]->(next);
 
 
