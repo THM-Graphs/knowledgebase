@@ -388,7 +388,7 @@ UNWIND textProperties AS prop
 WITH c, prop, c[prop] AS textValue
 
 WHERE textValue IS NOT NULL
-CREATE (t:Text { content: textValue, property: prop })
+CREATE (t:Text { text: textValue, label: prop })
 MERGE (t)-[:PART_OF]->(c)
 WITH c, COLLECT(t) AS textNodes
 WHERE SIZE(textNodes) > 1
