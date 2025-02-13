@@ -398,9 +398,7 @@ MERGE (current)-[:NEXT]->(next);
 // ATAG Chains
 CALL apoc.periodic.iterate(
   "MATCH (t:Text) WHERE t.text IS NOT NULL RETURN t",
-  "CALL atag.chains.fullChain(s, 'text')```cypher
-RETURN s
-```",
+  "CALL atag.chains.fullChain(t, 'text') RETURN t",
   {batchSize: 1000, parallel: true}
 )
 
