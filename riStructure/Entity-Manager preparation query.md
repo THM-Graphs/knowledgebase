@@ -490,6 +490,6 @@ elementLabel: "Character",
 relationshipType: "NEXT_CHARACTER"
 }) YIELD path AS updatedCharacterPath
 
-RETURN path, updatedCharacterPath
+RETURN path, updatedCharacterPath;
 
 ```
