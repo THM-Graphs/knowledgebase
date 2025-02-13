@@ -299,7 +299,7 @@ detach delete rel;
 
 // Create property connection between Entities
 MATCH (n:Entity)-[rel]->(n2:Entity)
-MERGE (n)-[:HAS_PROPERTY]->(:Property { type: TYPE(rel), uuid: randomUUID(), namespace: "implied_change_later" })-[:REFERS_TO]->(n2)
+MERGE (n)-[:HAS_PROPERTY]->(:Property { type: TYPE(rel), uuid: randomUUID(), namespace: "" })-[:REFERS_TO]->(n2)
 DELETE rel;
 
 
