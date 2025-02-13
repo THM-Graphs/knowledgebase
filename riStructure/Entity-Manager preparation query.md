@@ -395,5 +395,14 @@ UNWIND RANGE(0, SIZE(textNodes)-2) AS i
 WITH textNodes[i] AS current, textNodes[i+1] AS next
 MERGE (current)-[:NEXT]->(next);
 
+// ATAG Chains
+CALL apoc.periodic.iterate(
+  "MATCH (t:Text) WHERE t.text IS NOT NULL RETURN t",
+  "CALL atag.chains.fullChain(s, 'text')```cypher
+RETURN s
+```",
+  {batchSize: 1000, parallel: true}
+)
+
 
 ```
