@@ -396,11 +396,13 @@ WITH textNodes[i] AS current, textNodes[i+1] AS next
 MERGE (current)-[:NEXT]->(next);
 
 // ATAG Chains
-CALL apoc.periodic.iterate(
-  "MATCH (t:Text) WHERE t.text IS NOT NULL RETURN t",
-  "CALL atag.chains.fullChain(t, 'text') RETURN t",
-  {batchSize: 1000, parallel: true}
-)
+:auto MATCH (r:Text)
+WHERE r.text is not null AND NOT((r)-[:NEXT_TOKEN]->())
+CALL {
+WITH r
+CALL atag.chains.fullChain(r, "text")
+} IN TRANSACTIONS OF 1 ROWS
+RETURN count(*);
 
 CREATE INDEX token_uuid IF NOT EXISTS
 FOR (n:Token) ON (n.uuid);
@@ -438,7 +440,7 @@ RETURN count(*);
 
 
 MATCH (t:Text)-[:NEXT_TOKEN]->(s:Token)
-WITH t, s LIMIT 1
+WITH t, s LIMIT 1 // temp limit
 MATCH path = (s)-[:NEXT_TOKEN*]->(e:Token)
 WITH t, s, e, nodes(path) AS tokens
 
