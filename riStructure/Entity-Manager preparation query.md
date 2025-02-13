@@ -449,16 +449,16 @@ range(0, size(tokens)-1) AS indices
 WITH t, s, e, tokens,
 reduce(htmlTokens = [], i IN indices |
 CASE
-WHEN tokens[i].text = '<' AND i+1 < size(tokens)
-AND tokens[i+1].text IN ['a', 'b', 'sup', 'span', 'li', 'ol', 'em', 'link']
-AND i+2 < size(tokens) AND tokens[i+2].text = '>'
-THEN htmlTokens + [tokens[i], tokens[i+1], tokens[i+2]] // Öffnendes Tag <tag>
-WHEN tokens[i].text = '<' AND i+1 < size(tokens) AND tokens[i+1].text = '/'
-AND i+2 < size(tokens)
-AND tokens[i+2].text IN ['a', 'b', 'sup', 'span', 'li', 'ol', 'em', 'link']
-AND i+3 < size(tokens) AND tokens[i+3].text = '>'
-THEN htmlTokens + [tokens[i], tokens[i+1], tokens[i+2], tokens[i+3]] // Schließendes Tag </tag>
-ELSE htmlTokens
+	WHEN tokens[i].text = '<' AND i+1 < size(tokens)
+		AND tokens[i+1].text IN ['a', 'b', 'sup', 'span', 'li', 'ol', 'em', 'link']
+		AND i+2 < size(tokens) AND tokens[i+2].text = '>'
+	THEN htmlTokens + [tokens[i], tokens[i+1], tokens[i+2]] // Öffnendes Tag <tag>
+	WHEN tokens[i].text = '<' AND i+1 < size(tokens) AND tokens[i+1].text = '/'
+		AND i+2 < size(tokens)
+		AND tokens[i+2].text IN ['a', 'b', 'sup', 'span', 'li', 'ol', 'em', 'link']
+		AND i+3 < size(tokens) AND tokens[i+3].text = '>'
+	THEN htmlTokens + [tokens[i], tokens[i+1], tokens[i+2], tokens[i+3]] // Schließendes Tag </tag>
+	ELSE htmlTokens
 END
 ) AS htmlTokenSequences
 
