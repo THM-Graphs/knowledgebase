@@ -492,4 +492,119 @@ relationshipType: "NEXT_CHARACTER"
 
 RETURN path, updatedCharacterPath;
 
+
+
+
+// Alternative
+  
+
+MATCH (t:Text {uuid: "c2266482-05e0-43f7-96d2-040d3cdbec4b"})-[:NEXT_TOKEN]->(s:Token)
+
+WITH t, s
+
+MATCH path = (s)-[:NEXT_TOKEN*]->(e:Token)
+
+WITH t, s, e, nodes(path) AS tokens
+
+  
+
+// Berechnung der HTML/XML-Token-Sequenzen mit reduce()
+
+WITH t, s, e, tokens,
+
+range(0, size(tokens)-1) AS indices
+
+  
+
+WITH t, s, e, tokens,
+
+reduce(htmlTokens = [], i IN indices |
+
+CASE
+
+WHEN tokens[i].text = '<' AND i+1 < size(tokens)
+
+AND tokens[i+1].text IN ['a', 'b', 'sup', 'span', 'li', 'ol', 'em', 'link']
+
+AND i+2 < size(tokens) AND tokens[i+2].text = '>'
+
+THEN htmlTokens + [tokens[i], tokens[i+1], tokens[i+2]] // Öffnendes Tag <tag>
+
+WHEN tokens[i].text = '<' AND i+1 < size(tokens) AND tokens[i+1].text = '/'
+
+AND i+2 < size(tokens)
+
+AND tokens[i+2].text IN ['a', 'b', 'sup', 'span', 'li', 'ol', 'em', 'link']
+
+AND i+3 < size(tokens) AND tokens[i+3].text = '>'
+
+THEN htmlTokens + [tokens[i], tokens[i+1], tokens[i+2], tokens[i+3]] // Schließendes Tag </tag>
+
+ELSE htmlTokens
+
+END
+
+) AS htmlTokenSequences
+
+  
+
+// **Fix: Flache Liste von `htmlTokenSequences` mit Maps erzeugen**
+
+UNWIND htmlTokenSequences AS htmlToken
+
+WITH t, s, e, COLLECT(DISTINCT { uuid: htmlToken.uuid }) AS htmlTokenSequences, tokens
+
+  
+
+// **Fix: Korrekte Map-Struktur für `replacements`**
+
+WITH t, s, e, htmlTokenSequences,
+
+[token IN tokens WHERE NOT token IN htmlTokenSequences | { uuid: token.uuid, text: token.text }] AS replacements
+
+  
+
+// Update die Chain ohne html/xml elemente
+
+CALL atag.chains.update(t.uuid, s.uuid, e.uuid, replacements, {
+
+textLabel: "Text",
+
+elementLabel: "Token",
+
+relationshipType: "NEXT_TOKEN"
+
+}) YIELD path
+
+  
+
+// Finde die zugehörigen Character-Nodes für die ersetzten Tokens
+
+WITH path, htmlTokenSequences, t
+
+UNWIND htmlTokenSequences AS r
+
+MATCH (tk:Token {uuid: r.uuid }),
+
+(tk)-[:TOKEN_START]->(c1:Character),
+
+(tk)-[:TOKEN_END]->(c2:Character)
+
+  
+
+// Aktualisiere auch die Characters entsprechend
+
+CALL atag.chains.update(t.uuid, c1.uuid, c2.uuid, [], {
+
+textLabel: "Text",
+
+elementLabel: "Character",
+
+relationshipType: "NEXT_CHARACTER"
+
+}) YIELD path AS updatedCharacterPath
+
+  
+
+RETURN path, updatedCharacterPath;
 ```
