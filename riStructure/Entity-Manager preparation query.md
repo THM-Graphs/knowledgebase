@@ -414,7 +414,7 @@ WHERE t.uuid IS NOT NULL
 CALL {
 WITH t
 	SET t.uuid = randomUUID()
-	} IN TRANSACTIONS OF 300 ROWS
+	} IN TRANSACTIONS OF 1 ROWS
 RETURN count(*);
 
 :auto MATCH (c:Character)
@@ -422,7 +422,7 @@ WHERE c.uuid IS NOT NULL
 CALL {
 	WITH c
 	SET c.uuid = randomUUID()
-} IN TRANSACTIONS OF 300 ROWS
+} IN TRANSACTIONS OF 1 ROWS
 RETURN count(*);
 
 :auto MATCH (tok:Token)
@@ -430,7 +430,7 @@ WHERE tok.uuid IS NOT NULL
 CALL {
 	WITH tok
 	SET tok.uuid = randomUUID()
-} IN TRANSACTIONS OF 300 ROWS
+} IN TRANSACTIONS OF 1 ROWS
 RETURN count(*);
 
 ```
