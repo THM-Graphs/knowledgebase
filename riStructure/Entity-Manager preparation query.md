@@ -410,27 +410,27 @@ CREATE INDEX text_uuid IF NOT EXISTS
 FOR (n:Text) ON (n.uuid);
 
 :auto MATCH (t:Text)
-WHERE t.uuid IS NOT NULL
+WHERE t.uuid IS NULL
 CALL {
 WITH t
 	SET t.uuid = randomUUID()
-	} IN TRANSACTIONS OF 1 ROWS
+	} IN TRANSACTIONS OF 300 ROWS
 RETURN count(*);
 
 :auto MATCH (c:Character)
-WHERE c.uuid IS NOT NULL
+WHERE c.uuid IS NULL
 CALL {
 	WITH c
 	SET c.uuid = randomUUID()
-} IN TRANSACTIONS OF 1 ROWS
+} IN TRANSACTIONS OF 300 ROWS
 RETURN count(*);
 
 :auto MATCH (tok:Token)
-WHERE tok.uuid IS NOT NULL
+WHERE tok.uuid IS NULL
 CALL {
 	WITH tok
 	SET tok.uuid = randomUUID()
-} IN TRANSACTIONS OF 1 ROWS
+} IN TRANSACTIONS OF 300 ROWS
 RETURN count(*);
 
 ```
