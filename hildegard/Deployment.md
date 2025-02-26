@@ -64,6 +64,9 @@ Der Einfachheit halber wird erstmal nur ein Nutzer + Passwort eingerichtet. In Z
 ```shell
 # Muss vmtl erst installiert werden
 sudo apt install apache2-utils
+
+cd atag-editor
+
 # Passwort erzeugen 
 sudo htpasswd -c ./nginx/.htpasswd <username>
 ```
