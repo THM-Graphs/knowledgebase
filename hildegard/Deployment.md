@@ -36,6 +36,8 @@ EOF
 
 Die docker-compose-Konfiguration für den neo4j-Container benutzt die Standard-Zertifikatsdatei (`public.crt`) und den Standard-Key (`private.key`).  Das geht am einfachsten mit Symlinks auf die schon vorhandenen Dateien. In Zukunft gerne vereinfachen und die Dateien direkt so benennen (dann spart man sich auch den nächsten Schritt).
 
+Der `certificates` Ordner wird auf gleicher Ebene angelegt wie der `atag-editor`
+
 ```sh
 # certificates-Verzeichnis anlegen und reingehen
 mkdir certificates
