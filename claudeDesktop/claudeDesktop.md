@@ -65,6 +65,7 @@ Im Kern folgt MCP einer Client-Server-Architektur, bei der eine Host-Anwendung e
 
 - **Claude Desktop App**: Verfügbar für macOS und Windows.
 - **SDKs**: MCP bietet SDKs für TypeScript und [Python](https://pypi.org/project/mcp/).
+- nano ~/Library/Application\ Support/Claude/claude_desktop_config.json
 
 ### Schritte zum Beginnen
 
