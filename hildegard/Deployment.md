@@ -20,10 +20,11 @@ cd atag-editor
 
 touch .env
 
-# Hostname und Passwort müssen angepasst werden
+# Hostname, Passwort und Guidelines URL müssen angepasst werden
 cat > .env <<EOF 
 APP_HOST=<hostname>
 APP_PORT=8080
+GUIDELINES_URL=<path-to-guidelines.json>
 NEO4J_URI=bolt+ssc://neo4j:7687
 NEO4J_USER=neo4j
 NEO4J_PW=<password>
