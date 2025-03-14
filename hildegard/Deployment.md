@@ -20,7 +20,7 @@ cd atag-editor
 
 touch .env
 
-# Hostname, Passwort und Guidelines URL müssen angepasst werden
+# Hostname, Passwort, Guidelines URL und Stylesheet URL müssen angepasst werden
 cat > .env <<EOF 
 APP_HOST=<hostname>
 APP_PORT=8080
@@ -30,6 +30,7 @@ NEO4J_USER=neo4j
 NEO4J_PW=<password>
 NODE_ENV=production
 PROTOCOL=https
+STYLESHEET_URL=<path-to-stylesheet.css>
 EOF
 ```
 
