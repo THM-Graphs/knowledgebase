@@ -17,10 +17,10 @@ Hier gehts fast ausschließlich um Date/Time-Daten, siehe https://neo4j.com/docs
 
 | `format`-Wert | JavaScript Type                                                                                | Cypher Data type |
 | ------------- | ---------------------------------------------------------------------------------------------- | ---------------- |
-| `"date-time"` | [`LocalDateTime`](https://neo4j.com/docs/javascript-manual/current/data-types/#_localdatetime) | `LOCAL DATETIME`   |
-| `"time"`      | [`Time`](https://neo4j.com/docs/javascript-manual/current/data-types/#_time)                   | `ZONED TIME`       |
-| `"date"`      | [`Date`](https://neo4j.com/docs/javascript-manual/current/data-types/#_date)                   | `DATE`             |
-| `"duration"`  | [`Duration`](https://neo4j.com/docs/javascript-manual/current/data-types/#_duration)           | `DURATION`         |
+| `"date-time"` | [`LocalDateTime`](https://neo4j.com/docs/javascript-manual/current/data-types/#_localdatetime) | `LOCAL DATETIME` |
+| `"time"`      | [`Time`](https://neo4j.com/docs/javascript-manual/current/data-types/#_time)                   | `LOCAL TIME`     |
+| `"date"`      | [`Date`](https://neo4j.com/docs/javascript-manual/current/data-types/#_date)                   | `DATE`           |
+| `"duration"`  | [`Duration`](https://neo4j.com/docs/javascript-manual/current/data-types/#_duration)           | `DURATION`       |
 #### `number`
 In der Tabelle oben ist nur von "numeric types" die Rede, aber hier gibt es zwei Ausprägungen: `integer` (für Integer) und `number` (für Floats).
 
