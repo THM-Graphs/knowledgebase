@@ -1,3 +1,5 @@
+// nano ~/Library/Application\ Support/Claude/claude_desktop_config.json
+
 {"mcpServers": {  
       "movies-neo4j": {  
         "command": "uvx",  
