@@ -163,7 +163,7 @@ CALL {
   WITH author, m
   RETURN CASE 
     WHEN author IS NOT NULL 
-    THEN apoc.create.vRelationship(author, 'SENT_BY', {}, m) 
+    THEN apoc.create.vRelationship(m, 'SENT_BY', {}, author) 
     ELSE NULL 
   END AS vSentBy
 }
@@ -190,7 +190,7 @@ CALL {
   WITH receiver, m
   RETURN CASE 
     WHEN receiver IS NOT NULL 
-    THEN apoc.create.vRelationship(receiver, 'RECEIVED_BY', {}, m) 
+    THEN apoc.create.vRelationship(m, 'RECEIVED_BY', {}, receiver) 
     ELSE NULL 
   END AS vReceivedBy
 }
@@ -199,7 +199,7 @@ CALL {
   WITH author, e
   RETURN CASE 
     WHEN author IS NOT NULL 
-    THEN apoc.create.vRelationship(author, 'MENTIONED_BY', {}, e) 
+    THEN apoc.create.vRelationship(e, 'MENTIONED_BY', {}, author) 
     ELSE NULL 
   END AS vMentionedBy
 }
