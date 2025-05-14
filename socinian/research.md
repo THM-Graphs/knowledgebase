@@ -11,6 +11,8 @@ MATCH (ruarus:Entity {guid: 'zrl_x1x_12b'})
 MATCH (ruarus)-[:SENT_BY]-(sent:Sent)-[:SENT_FROM]-(place:Entity {type: "place"})
 MATCH (sent)<-[:HAS_ANNOTATION]-(metadata:Metadata)
 MATCH (metadata)-[:HAS_ANNOTATION]->(received:Received)-[:RECEIVED_BY]->(receiver:Entity)
+
+WITH sent.dateStart AS date, place, metadata, receiver
 ORDER BY date
 
 WITH collect({date: date, place: place, metadata: metadata, receiver: receiver}) AS letters
